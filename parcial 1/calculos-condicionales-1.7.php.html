@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo-1.7.css">
+    <title>TAREA 1.7 ENTRADA DE DATOS</title>
+</head>
+<body>
+    <H1>CÁLCULOS CONDICIONALES</H1>
+    <ul id="menu">
+        <li><a href="index-1.7.php">PRINCIPAL</a></li>
+        <li><a href="calculos-condicionales-1.7.php">CÁLCULOS C.</a></li>
+        <li><a href="formulota-1.7.php">FORMULOTA</a></li>
+        <li><a href="el-lado-mas-corto-1.7.php">EL MÁS CORTO</a></li>
+        <li><a href="escalera-1.7.php">ESCALERA-ASTERISCOS</a></li>
+    </ul>
+
+    <h2>DESCRIPCIÓN: </h2>
+    Eres muy bueno evaluando fórmulas y realizando cálculos directos, 
+    pero te cuesta trabajo decidir en qué situaciones se deben hacer qué operaciones. <BR>
+    Un compañero te sugirió un ejercicio de cálculo mental que consiste en, dado un número inicial N ,
+    realizar las siguientes operaciones en el orden indicado y con aritmética entera: <BR>
+
+        1.Si el valor actual de N es par, divídelo entre 2. En caso contrario, súmale 1.<BR>
+        2.Si el valor actual de N tiene tres o más cifras, divídelo entre 100. Pero si tiene exactamente dos cifras, 
+        divídelo entre 10.<BR>
+        3.Si el valor actual de N es un múltiplo de tres, réstale uno.<BR>
+        Escribe un programa que te ayude a calcular el valor final de N y el número de veces que N fue modificado.<BR>
+
+    <br><h2>ENTRADA</h2>
+   Un entero N. Puedes suponer que 1<=N<=1000.
+
+<BR><h2>SALIDA</h2>
+Dos enteros que correspondan con el valor final de N y el número de veces que N fue modificado respectivamente.<BR>
+
+<br><table border="3" cellspacing="2" cellspadding="2">
+    <tr>
+        <th>ENTRADA</th> 
+        <th>SALIDA</th>
+    </tr>
+    <tr >
+        <td> 7 </td>
+        <td> 8 ___ 1 </td>
+    </tr>
+     </table>
+
+<BR><form action="calculos-condicionales-1.7.php" method="post">
+    N:
+    <input type="text" name="txtN"> <br>
+    <br><input type="submit" value="Enviar"> <br>
+</form>
+<?php
+    if($_POST){
+        $N=$_POST['txtN'];
+        $a=0;
+        if($N%2==0){
+            $N=$N/2;
+            $a=$a+1;
+            }
+        else{
+            $N=$N+1;
+            $a=$a+1;
+           }
+        $n=strlen($N);
+        if($n==3){
+            $N=$N/100;
+            $a=$a+1;
+           }
+        elseif($n==2){
+            $N=$N/10;
+            $a=$a+1;
+            } 
+        if($N%3==0){
+            $N=$N-1;
+            $a=$a+1;
+        }
+        echo "N: " . $N . "<br>";
+        echo "N SE MODIFICÓ: " . $a;
+    }
+?>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo-1.7.css">
+    <title>TAREA 1.7 ENTRADA DE DATOS</title>
+</head>
+<body>
+    <H1>EL LADO MÁS CORTO</H1>
+    <ul id="menu">
+        <li><a href="index-1.7.php">PRINCIPAL</a></li>
+        <li><a href="calculos-condicionales-1.7.php">CÁLCULOS C.</a></li>
+        <li><a href="formulota-1.7.php">FORMULOTA</a></li>
+        <li><a href="el-lado-mas-corto-1.7.php">EL MÁS CORTO</a></li>
+        <li><a href="escalera-1.7.php">ESCALERA-ASTERISCOS</a></li>
+    </ul>
+
+    <h2>DESCRIPCIÓN</h2>
+    Escribe un programa que, dadas las coordenadas de los vértices de un cuadrilátero, 
+    calcule la longitud de su lado más corto.<br>
+
+    <h2>ENTRADA</h2>
+    Ocho reales x1-y1, x2-y2, x3-y3, x4-y4. Puedes suponer que 0<= Xi, Yi <=100 y que los vértices se listan 
+    ordenados en el sentido de las manecillas del reloj.<br>
+
+    <h2>SALIDA</h2>
+    Un real que sea la longitud del lado más corto del cuadrilátero.
+    Tu programa se considerará correcto si el valor calculado es razonablemente cercano a la respuesta exacta.<br>
+
+<br><table border="3" cellspacing="2" cellspadding="2">
+    <tr>
+        <th>ENTRADA</th> 
+        <th>SALIDA</th>
+    </tr>
+    <tr >
+        <td> 10.1 _ 10.2 <br> 20.2 _ 10.3 <br> 22.3 _ 4.1 <br> 7.5 _ 0.9 </td>
+        <td> 6.545991 </td>
+    </tr>
+     </table><HR>
+
+<BR><form action="el-lado-mas-corto-1.7.php" method="post">
+    X 1 :
+    <input type="text" name="txtX1">
+       Y 1 :
+    <input type="text" name="txtY1"> <br>
+    X 2 :
+    <input type="text" name="txtX2">
+       Y 2 :
+    <input type="text" name="txtY2"> <br>
+    X 3 :
+    <input type="text" name="txtX3">
+       Y 3 :
+    <input type="text" name="txtY3"> <br>
+    X 4 :
+    <input type="text" name="txtX4">
+       Y 4 :
+    <input type="text" name="txtY4"> <br>
+
+    <br><input type="submit" value="Enviar"> <br><HR>
+</form>
+
+<?php
+    if($_POST)
+    {
+        $X1=$_POST['txtX1'];
+        $Y1=$_POST['txtY1'];
+        $X2=$_POST['txtX2'];
+        $Y2=$_POST['txtY2'];
+        $X3=$_POST['txtX3'];
+        $Y3=$_POST['txtY3'];
+        $X4=$_POST['txtX4'];
+        $Y4=$_POST['txtY4'];
+
+        $lado1 = sqrt(pow(($Y2 - $Y1), 2) + pow(($X2 - $X1), 2));
+        $lado2 = sqrt(pow(($Y3 - $Y2), 2) + pow(($X3 - $X2), 2));
+        $lado3 = sqrt(pow(($Y4 - $Y3), 2) + pow(($X4 - $X3), 2));
+        $lado4 = sqrt(pow(($Y1 - $Y4), 2) + pow(($X1 - $X4), 2));
+
+        if($lado1<$lado2 and $lado1<$lado3 and $lado1<$lado4)
+        {
+            echo "EL LADO MÁS CORTO ES : " . $lado1;
+        }
+
+        if($lado2<$lado1 and $lado2<$lado3 and $lado2<$lado4)
+        {
+            echo "EL LADO MÁS CORTO ES : " . $lado2;
+        }
+
+        if($lado3<$lado1 and $lado3<$lado2 and $lado3<$lado4)
+        {
+            echo "EL LADO MÁS CORTO ES : " . $lado3;
+        }
+
+        if($lado4<$lado1 and $lado4<$lado2 and $lado4<$lado3)
+        {
+            echo "EL LADO MÁS CORTO ES : " . $lado4;
+        }
+    }
+?>
+</body>
+</html>
